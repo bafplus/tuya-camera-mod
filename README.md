@@ -1,2 +1,53 @@
 # tuya-camera-mod
-I quick recap on how to mod a tuya ip-cam to expose rtsp and onvif
+
+Het is mogelijk om de meest Tuya ip-camera's aan te passen zodat je deze kunt gebruiken in secundaire systemen.
+Het probleem met deze camera's is namelijk dat deze de rtsp streams en Onvif poort dicht hebben staan en je die normaliter dus niet kunt gebruiken.
+Met een simpele aanpassing kun je deze wel activeren, het enige wat je nodig hebt is een SD-kaart die je nu waarschijnlijk toch al in de camera hebt zitten.
+Onderstaande handleiding is gebaseerd op https://github.com/guino/Merkury720 maar mijn doel is om het hier wat korter en makkelijker neer te zetten.
+Het is trouwens geen garantie dat dit voor jouw camera gaat werken, je beschadigd er niets mee dus proberen kan totaal geen kwaad.
+Werkt het niet, simpelweg je SD-kaart formateren en alles is weer hersteld.
+
+## Wat heb je nodig?
+- Tuya-based IP-Camera met firmware 2.7x of hoger (vindt je terug in de Tuya app)
+- Een SD kaart (die je nu wss toch al in je camera hebt zitten)
+- SD-kaartreader of slot op je PC/Laptop
+
+## Here we go!
+
+Let op! Er zijn 720P en 1080P camera's. Hier zitten kleine verschillen in qua stappen, waar nodig zal ik dat aangeven.
+
+- Zorg ervoor dat je camera werkt en compleet is aangemeld in je Tuya app. Hij moet dus al compleet werken en zal altijd nog verbonden blijven met Tuya en de app. 
+- Zet de camera uit door de usb kabel of voeding los te halen.
+- Haal de SD-kaart uit je camera en koppel deze aan je PC.
+- Download deze repo naar je PC: https://github.com/guino/Merkury720 .
+- Zet alle bestanden uit het mapje <b>MMC</b> direct in de root van je SD-kaart.
+- Dowload Busybox DIRECT naar je SD-kaart (rechtsklikken->"opslaan als" en dan SD-kaart selecteren): https://github.com/guino/Merkury720/blob/main/mmc/busybox?raw=true .
+- Download ppsFactoryTool.txt DIRECT naar de root van je SD-kaart (dus niet de code copy-pasten!)(rechtsklikken->"opslaan als" en dan SD-kaart selecteren): https://github.com/guino/Merkury720/raw/main/ppsFactoryTool.txt
+- Open "ppsFactoryTool.txt" in Kladblok en wijzig de SSID en Wachtwoord naar die van jouw wireless netwerk. Verander verder helemaal niets, geen enter, geen extra lijn helemaal niks! Zodra dit bestandje straks gezien wordt door jouw camera dan zal deze de webserver opstarten op poort 80 (of 8090 voor 4.0x). Zonder deze stap werken straks alle nodige url's niet.
+- <b>Alleen voor 1080P camera:</b> Download deze repo en overschrijf de 3 bestandjes op je SD kaart met de 3 bestandjes uit de map <b>MMC</b> uit deze repo: https://github.com/guino/Merkury1080P .
+- Eject/unmount de SD-kaart VEILIG van je PC (dus niet simpelweg eruit halen maar eerst rechtsklikken en "Uitwerpen" klikken).
+
+Je SD-kaart is nu voorbereid en nu gaan we je camera daadwerkelijk ROOTEN.
+
+- Doe de SD-kaart in je camera.
+- Houdt de resetknop <b>ingedrukt</b>
+- Sluit de usb/voedingskabel weer aan terwijl je de resetknop VAST blijft houden.
+- Blijf de resetknop minimaal 5 seconden vasthouden of liever nog tot je de camera hoort piepen.
+- Open een browser op je PC en ga naar http://admin:056565099@192.168.1.x/proc/cmdline (wijzig IP adres naar die van jouw camera). Sommige camera's gebruiken "admin" ipv "056565099" dus http://admin:admin@192.168.1.x/proc/cmdline. <b>Voor 1080P</b> gebruik je http://admin:056565099@192.168.1.x:8090/proc/cmdline of http://admin:admin@192.168.1.x:8090/proc/cmdline omdat daar de webserver op poort 8090 draait ipv poort 80.
+- Als alles goed is gegaan zie je nu dit ongeveer in je browser: 
+```
+mem=64M console=ttySAK0,115200n8 mtdparts=spi0.0:256k(bld)ro,64k(env)ro,64k(enc)ro,64k(sysflg)ro,2496k(sys),4608k(app),640k(cfg) ppsAppParts=5 ip=0 - ip=30;/mnt/mmc01/initrun.sh)&:::::;date>/tmp/hack;(sleep
+```
+Zie je dit niet probeer dan een van de andere bovengenoemde url's, werkt ook dat niet herstart je camera, dan nog niet check of je de goede SSID en password opgegegevn hebt in de textfile, werkt het dan nog niet....tja....kijk dan even in de originele repo. Zie je wel wat maar niet het laatste gedeelte ( <b>- ip=30...</b>) dan heeft de hack niet gewerkt. Dit kan soms komen door het type SD-kaart. Raar genoeg werkt een cheapass kaartje het beste.
+
+Zie je dit wel? Mooi! De hack heeft gewerkt!
+Maar we zijn er nog niet....
+
+- Open de URL http://admin:056565099@192.168.1.x/proc/self/root/mnt/mmc01/hack of http://admin:admin@192.168.1.x/proc/self/root/mnt/mmc01/hack, <b>voor 1080P:</b> http://admin:056565099@192.168.1.x:8090/proc/self/root/mnt/mmc01/hack of http://admin:admin@192.168.1.x:8090/proc/self/root/mnt/mmc01/hack . Er zou nu de tekst "Done" moeten staan wat aangeeft dat de hack daadwerkelijk gewerkt heeft. Soms werkt deze link niet maar heeft de hack wel gewerkt. Zet de camera uit en haal de SD-kaart eruit en doe deze in je PC. ALs de hack gewerkt heeft dan heb je nu een "hack" file en een "home" folder.
+
+Het rooten is nu gebeurd! Maar we zijn er nogsteeds niet...pfff ;-)
+
+## ppsapp patchen:
+Nu gaan we de PPSAPP file patchen. Dit moet voor elke camera specifiek gebeuren want dit hangt samen met het serienummer etc van jouw camera. Die dit dus ook voor elke camera mocht je er meerdere hebben.
+
+
