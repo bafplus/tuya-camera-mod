@@ -51,7 +51,30 @@ Het rooten is nu gebeurd! Maar we zijn er nogsteeds niet...pfff ;-)
 Nu gaan we de PPSAPP file patchen. Dit moet voor elke camera specifiek gebeuren want dit hangt samen met het serienummer etc van jouw camera. Die dit dus ook voor elke camera mocht je er meerdere hebben.
 <b>LET OP!</b> Zorg ervoor dat je het patchbestand gebruikt die bij jouw camera hoort. Dus niet van een ander type camera. Dit zou je camera zelfs kunnen bricken! Dit check je aan de hand van het hardware type verderop besproken. Is er nog geen patch voor jouw camera dan kan de developer deze voor je maken. Ook deze stappen worden hieronder beschreven. Kortgezegd, onderstande is het lastigste dus check goed dat al het nodige overeenkomt met jouw camera.
 
-18. Zet je camera uit en haal de SD-kaart eruit en doe deze in je PC.
-19. 
+18. Ga naar http://admin:056565099@192.168.1.x/devices/deviceinfo of http://admin:admin@192.168.1.x/devices/deviceinfo <b>voor 1080P:</b> http://admin:056565099@192.168.1.x:8090/devices/deviceinfo of http://admin:admin@192.168.1.x:8090/devices/deviceinfo . Hier zie je diverse info over jouw camera en hier vindt je ook je firmwareversie en hardwareversie. Noteer deze.
+19. Zet je camera uit en haal de SD-kaart eruit en doe deze in je PC.
+20. Ga naar https://github.com/guino/ppsapp-rtsp/issues/1 en kijk of jouw patch al beschikbaar is in de lijst en download de ppsapp-rtsp.zip file naar je PC. Kijk ook even of er evt speciale instructies vermeld staan welke je moet volgen.  Is er nog geen file voor jouw camera? Volg dan de stappen in het volgende hoofdstuk dan heb je binnen enkele dagen alsnog een patchfile en vervolg dan deze instructies.
+21. Ga naar https://www.marcrobledo.com/RomPatcher.js/ <b>Klik NIET op "Creator Mode"!!!</b>.
+22. Klik "Choose file" bij Rom File en selecteer je originele ppsapp op je sd-kaart in de map /home/app/ppsapp.
+23. Klik "Choose file" bij Patch File en selecteer de patch zip die je in stap 20 gedownload hebt.
+24. Klik "Apply Patch" en download het bestand direct naar de root van je SD-kaart. Het bestand heet waarschijnlijk "ppsapp-rtsp".
+25. Hernoem dat bestand op je SD-kaart naar "<b>ppsapp</b>" en controleer dat het bestand GEEN extensie heeft zoals bv .txt.
+26. Verwijder de SD-kaart veilig van je PC (eject/unmount) en stop deze in je camera.
+27. Start de camera op zoals normaal. Je hoor dan als het goed is 2x het opstartgeluid. 1x voor de camera en even later een 2e keer voor de patch.
+28. Zodra de camera volledig is opgestart zijn je streams beschikbaar onder rtsp://admin:056565099@192.168.1.x:8554 of rtsp://admin:admin@192.168.1.x:8554. Sommige camera's hebben andere urls, bv 1 voor SD en 1 voor HD, dat staat dan vermeld bij de patchfile uit stap 20.
+
+Veel plezier!!
+
+Ervaar je problemen maak dan gerust een issue aan. Bedenk wel dat dit niet mijn repo is dus support zal beperkt zijn. Het beste kun je dan ook direct in de originele repo een issue starten. Staan er fouten in deze manual laat het mij dan weten dan zal ik dat aanpassen.
+
+## Mijn camera heeft nog geen patchfile, wat nu?
+
+Als je camera nog niet in de lijst staat op https://github.com/guino/ppsapp-rtsp/issues/1 kun je 2 dingen doen.
+
+1. Als je zelf handig genoeg bent: https://github.com/guino/ppsapp-rtsp
+
+of
+
+2. De patchfile laten maken. Dit Is de meest makkelijke weg. Maak simpelweg een issue aan op https://github.com/guino/ppsapp-rtsp/issues en copy/paste daarin alle info uit http://admin:056565099@192.168.1.x/devices/deviceinfo of http://admin:admin@192.168.1.x/devices/deviceinfo <b>voor 1080P:</b> http://admin:056565099@192.168.1.x:8090/devices/deviceinfo of http://admin:admin@192.168.1.x:8090/devices/deviceinfo. Voeg ook jouw PPSAPP file uit home/app/ppsapp toe als bijlage. Enkele dagen later ontvang je dan een patch voor jouw camera on wordt deze ook gelijk toegevoegd aan de lijst zodat andere gebruikers hem kunnen gebruiken. Volg verder de instructies vanaf punt 21.
 
 
