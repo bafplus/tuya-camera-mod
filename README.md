@@ -12,6 +12,8 @@ Werkt het niet, simpelweg je SD-kaart formateren en alles is weer hersteld.
 - Een SD kaart (die je nu wss toch al in je camera hebt zitten)
 - SD-kaartreader of slot op je PC/Laptop
 
+Let op! Je gaat bestanden op je SD-kaart zetten die daar ook moeten blijven staan. Zodra je kaart vol begint te raken door je opnamens dan kan je camera deze bestanden verwijderen/overschrijven. Om dit te voorkomen kun je in custom.sh aangeven wat de retentie moet zijn. Zet deze bv op 2-3 dagen. Zet deze ook weer niet te lang om te voorkomen dat je kaart alsnog volloopt. Als je toch al opneemt op een secundair systeem kun je de opnameregistratie zelfs beter uitzetten in camera instellingen->Sd-kaart in de Tuya app.
+
 ## Here we go!
 
 Let op! Er zijn 720P en 1080P camera's. Hier zitten kleine verschillen in qua stappen, waar nodig zal ik dat aangeven.
