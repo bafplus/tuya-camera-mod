@@ -64,6 +64,11 @@ Nu gaan we de PPSAPP file patchen. Dit moet voor elke camera specifiek gebeuren 
 26. Verwijder de SD-kaart veilig van je PC (eject/unmount) en stop deze in je camera.
 27. Start de camera op zoals normaal. Je hoor dan als het goed is 2x het opstartgeluid. 1x voor de camera en even later een 2e keer voor de patch.
 28. Zodra de camera volledig is opgestart zijn je streams beschikbaar onder rtsp://admin:056565099@192.168.1.x:8554 of rtsp://admin:admin@192.168.1.x:8554. Sommige camera's hebben andere urls, bv 1 voor SD en 1 voor HD, dat staat dan vermeld bij de patchfile uit stap 20.
+Maastal is het rtsp://admin:admin@192.168.1.x:8554/Streaming/Channels/101 voor HD en rtsp://admin:admin@192.168.1.x:8554/Streaming/Channels/102 voor SD.
+
+Vaak kun je middels een ONVIF scanner ook deze data "uit de camera trekken".
+Bv middels https://camerabewakinginformatie.nl/onvif-devce-manager-hoe-kan-ik-hem-gebruiken/
+Bij inloggen gebruik je dan admin:admin of admin:056565099.
 
 Veel plezier!!
 
